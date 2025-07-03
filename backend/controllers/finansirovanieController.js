@@ -2,8 +2,10 @@ const { normalizeCityName } = require("../utils/normalize");
 const { readExcelFile } = require("../utils/readExcelFile");
 // const { compareAreas } = require("../utils/compareAreas");
 const { actualizationStatusData } = require("../utils/actualizationStatusData");
+const { getCurrentQuarter } = require("../utils/getCurrentQuarter");
 
 const fileName = "finansirovanie";
+
 class FinansirovanieController {
   async getData(req, res) {
     try {
@@ -31,7 +33,7 @@ class FinansirovanieController {
         const period = row["Отчетный период"]?.toLowerCase().trim();
         const sum = parseFloat(row["Сумма, тыс. руб."]);
 
-        if (period !== "2 квартал 2025") return; // исправить позже, АВТОМАТИЗИРОВАТЬ
+        if (period !== getCurrentQuarter()) return;
 
         regionSummary["Липецкая область"] += sum;
 
@@ -40,8 +42,8 @@ class FinansirovanieController {
         }
       });
 
-      // return regionSummary;
-      return res.json(regionSummary);
+      return regionSummary;
+      // return res.json(regionSummary);
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
       return res.status(500).json({ error: "Ошибка доступа к файлу" });

@@ -1,4 +1,5 @@
 const { normalizeCityName } = require("../utils/normalize");
+const { getCurrentQuarter } = require("../utils/getCurrentQuarter");
 
 /*
   Для Коллективных договоров и Отраслевых соглашений
@@ -20,7 +21,7 @@ const compareAreas = (data) => {
     const period = row["Отчетный период"]?.toLowerCase().trim();
     const current = row["Действующий"]?.toLowerCase().trim();
 
-    if (period !== "2 квартал 2025") return; // исправить позже, АВТОМАТИЗИРОВАТЬ
+    if (period !== getCurrentQuarter()) return;
     if (current !== "да") return;
 
     regionSummary["Липецкая область"] += 1;
@@ -30,6 +31,7 @@ const compareAreas = (data) => {
     }
   });
 
+  // console.log(today);
   return regionSummary;
 };
 

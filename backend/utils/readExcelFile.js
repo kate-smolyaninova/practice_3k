@@ -15,8 +15,15 @@ module.exports = {
 };
 
 // const { readExcelFile } = require("../utils/readExcelFile");
-
 /*
   const fileName = "kollektivnie_dogovory";
   const data = readExcelFile(fileName);
+*/
+
+/*
+  wb — workbook (рабочая книга Excel)
+  ws — worksheet (рабочий лист Excel)
+  wb.SheetNames — массив названий всех вкладок (["Лист1", "Лист2", ...])
+  wb.Sheets[имя_листа] — доступ к самому содержимому листа.
+  XLSX.utils.sheet_to_json(ws) - Преобразует содержимое листа ws в массив JavaScript-объектов
 */

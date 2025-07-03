@@ -56,8 +56,8 @@ class OtraslevyeController {
 
       const regionSummary = compareAreas(data);
 
-      // return regionSummary;
-      return res.json(regionSummary);
+      return regionSummary;
+      // return res.json(regionSummary);
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
       return res.status(500).json({ error: "Ошибка доступа к файлу" });

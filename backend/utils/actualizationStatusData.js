@@ -1,3 +1,5 @@
+const { getCurrentQuarter } = require("./../utils/getCurrentQuarter");
+
 const actualizationStatusData = (data) => {
   const actualizationStatusCount = {
     "не актуализировано": 0,
@@ -8,7 +10,7 @@ const actualizationStatusData = (data) => {
     const period = row["Отчетный период"]?.toLowerCase().trim();
     const isActualize = row["Статус согласования"]?.toLowerCase().trim();
 
-    if (period !== "2 квартал 2025") return; // исправить позже, АВТОМАТИЗИРОВАТЬ
+    if (period !== getCurrentQuarter()) return; // исправить позже, АВТОМАТИЗИРОВАТЬ
 
     isActualize === "данные актуализированы"
       ? (actualizationStatusCount["данные актуализированы"] += 1)
@@ -21,7 +23,6 @@ const actualizationStatusData = (data) => {
 module.exports = {
   actualizationStatusData,
 };
-
 
 // const { actualizationStatusData } = require("../utils/actualizationStatusData");
 // actualizationStatusData(data);

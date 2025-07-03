@@ -4,7 +4,7 @@ const { compareAreas } = require("../utils/compareAreas");
 const { actualizationStatusData } = require("../utils/actualizationStatusData");
 const { quarterlyCountData } = require("../utils/quarterlyCountData");
 const { monthlyCountData } = require("../utils/monthlyCountData");
-
+const { getCurrentQuarter } = require("./../utils/getCurrentQuarter");
 const fileName = "kollektivnie_dogovory";
 
 class KollektivnyeController {
@@ -18,7 +18,7 @@ class KollektivnyeController {
       return res.status(500).json({ error: "Ошибка доступа к файлу" });
     }
   }
-  
+
   // данные для графика "Динамика заключения соглашений"
   async monthlyCount(req, res) {
     try {
@@ -95,6 +95,9 @@ class KollektivnyeController {
         const city = normalizeCityName(row["Муниципальное образование"]);
         const industry = row["Вид деятельности"].toLowerCase().trim();
         const count = parseInt(row["Численность охваченных работников"]);
+        const quarterlys = row["Отчетный период"].toLowerCase().trim();
+
+        if (quarterlys !== getCurrentQuarter) return;
 
         // if (!allIndustries.includes(industry)) {
         //   industry = "иные отрасли";
