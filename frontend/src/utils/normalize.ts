@@ -1,4 +1,4 @@
-function normalizeCityName(name) {
+export default function normalizeCityName(name: string): string {
   return name
     .toLowerCase()
     .replace("г. ", "")
@@ -8,10 +8,6 @@ function normalizeCityName(name) {
     .replace(/мр\.?|мо\.?|мун\.?обл\.?|округ\s*$/i, "")
     .trim();
 }
-
-module.exports = {
-  normalizeCityName,
-};
 
 // const { normalizeCityName } = require("../utils/normalize");
 

@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: max-content;
+  padding: 10px 15px;
+  border: 1px solid #452e5a;
+  border-radius: 10px;
+}
+
+.description {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.numbers {
+  display: flex;
+  gap: 5px;
+}
+
+.count {
+  font-size: 25px;
+}
+
+.percent {
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #5fb0c0;
+}
+
+.data {
+  font-size: 9px;
+  color: #a59faa;
+}
+
+.infoblockRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -1,0 +1,47 @@
+.app-wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* gap: 40px; */
+}
+
+.chart-row-0,
+.chart-row-01,
+.chart-row-1,
+.chart-row-2 {
+  width: 100%;
+
+  height: calc(25% - 30px);
+  margin-bottom: 30px;
+}
+
+.chart-row-1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chart-row-2 {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.pie-wrapper {
+  /* background-color: aqua; */
+  height: "200px";
+  width: "50%";
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.chart_wrapper {
+  width: 55%;
+}

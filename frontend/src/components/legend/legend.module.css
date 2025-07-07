@@ -1,0 +1,31 @@
+.legendHorizontal {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-items: center;
+  width: max-content;
+}
+
+.legendVertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
+}
+
+.legendItem {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
+
+.color {
+  width: 15px;
+  height: 10px;
+}
+
+.name {
+  font-size: 11px;
+  font-weight: 600;
+}

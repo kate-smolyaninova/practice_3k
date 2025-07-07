@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  height: max-content;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo > p {
+  width: 440px;
+  text-transform: uppercase;
+}
+
+/* .logo > img {
+  width: 80px;
+
+} */
+
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  text-transform: uppercase;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
