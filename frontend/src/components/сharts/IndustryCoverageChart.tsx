@@ -49,15 +49,19 @@ const IndustryCoverageChart = () => {
   ];
 
   return (
-    <div className={styles.wrapper} style={{ width: "100%", height: "100%" }}>
+    <div className={styles.chartWrapper}>
       <p>Охват работников по отраслям деятельности</p>
 
-      <div className={styles.chart} style={{ width: "100%", height: "85%" }}>
+      <div
+        className={styles.chart}
+        // style={{ flex: 1, height: "100%" }}
+      >
         <Line
           data={chartData}
           options={options}
           plugins={[ChartDataLabels]}
-          // style={{ width: "100%", height: "50%", display: "block" }}
+          style={{ flex: 1 }}
+          // style={{ backgroundColor:'red'}}
         />
       </div>
 

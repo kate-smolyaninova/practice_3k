@@ -59,10 +59,13 @@ const QuarterlyTrendsCharts = () => {
     //   />
     // </div>
 
-    <div className={styles.wrapper} style={{ width: "45%", height: "100%" }}>
+    <div className={styles.chartWrapper} style={{ width: "45%" }}>
       <p>Охват работников по отраслям деятельности</p>
 
-      <div className={styles.chart} style={{ width: "100%", height: "85%" }}>
+      <div
+        className={styles.chart}
+        //  style={{ flex: 1, height: "100%" }}
+      >
         <Line
           data={chartData}
           options={options}

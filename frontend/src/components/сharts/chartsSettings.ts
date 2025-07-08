@@ -4,10 +4,63 @@ const getFontSizeByScreen = () => {
   if (typeof window === "undefined") return 12; // SSR fallback
   const width = window.innerWidth;
 
-  if (width > 1920) return 11;
+  if (width > 2300) return 15;
+  if (width > 1900) return 11;
+  if (width > 1800) return 10;
+  if (width > 1500) return 9;
   if (width > 1440) return 9;
-  // if (width > 1024) return 8;
+  if (width > 1300) return 8;
+  if (width > 1000) return 7;
   // if (width > 768) return 8;
+  return 10;
+};
+
+const getBarThickness_1 = () => {
+  if (typeof window === "undefined") return 12; // SSR fallback
+  const width = window.innerWidth;
+
+  if (width > 1800) return 20;
+  if (width > 1500) return 18;
+  if (width > 1440) return 18;
+  if (width > 1000) return 10;
+
+  // if (width > 768) return 8;
+  return 10;
+};
+
+const getBarThickness_2 = () => {
+  if (typeof window === "undefined") return 12; // SSR fallback
+  const width = window.innerWidth;
+
+  if (width > 2000) return 20;
+  if (width > 1960) return 18;
+  if (width > 1400) return 12;
+
+  if (width > 500) return 10;
+
+  return 10;
+};
+
+const getBborderWidth = () => {
+  if (typeof window === "undefined") return 12; // SSR fallback
+  const width = window.innerWidth;
+
+  if (width > 1800) return 3;
+  if (width > 1700) return 2;
+  if (width > 1440) return 1;
+  if (width > 500) return 1;
+  return 10;
+};
+
+const getPointRadius = () => {
+  if (typeof window === "undefined") return 12; // SSR fallback
+  const width = window.innerWidth;
+
+  if (width > 1800) return 5;
+  if (width > 1700) return 3;
+  if (width > 1440) return 2;
+  if (width > 500) return 2;
+
   return 10;
 };
 
@@ -111,7 +164,9 @@ export const quarterlyTrendsData = (data: QuarterlyTrends | null) => {
         pointBorderColor: "#8E44AD",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+
+        borderWidth: getBborderWidth(),
       },
       {
         label: "Отраслевые соглашения",
@@ -122,7 +177,8 @@ export const quarterlyTrendsData = (data: QuarterlyTrends | null) => {
         pointBorderColor: "#4C84CF",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+        borderWidth: getBborderWidth(),
       },
     ],
   };
@@ -165,7 +221,9 @@ export const agreementTrendsData = (data: AgreementTrends | null) => {
         pointBorderColor: "#8E44AD",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+
+        borderWidth: getBborderWidth(),
       },
       {
         label: "Отраслевые соглашения",
@@ -176,7 +234,8 @@ export const agreementTrendsData = (data: AgreementTrends | null) => {
         pointBorderColor: "#4C84CF",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+        borderWidth: getBborderWidth(),
       },
     ],
   };
@@ -241,7 +300,8 @@ export const industryCoverageData = (data: IndustryCoverage | null) => {
         pointBorderColor: "#7267A8",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+        borderWidth: getBborderWidth(),
       },
       {
         label: "Образование",
@@ -252,7 +312,8 @@ export const industryCoverageData = (data: IndustryCoverage | null) => {
         pointBorderColor: "#576EB2",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+        borderWidth: getBborderWidth(),
       },
       {
         label: "Медицина",
@@ -263,7 +324,8 @@ export const industryCoverageData = (data: IndustryCoverage | null) => {
         pointBorderColor: "#9B8EDE",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+        borderWidth: getBborderWidth(),
       },
       {
         label: "Культура",
@@ -274,7 +336,8 @@ export const industryCoverageData = (data: IndustryCoverage | null) => {
         pointBorderColor: "#3258C9",
         // tension: 0.1,
         tension: 0,
-        pointRadius: 5,
+        pointRadius: getPointRadius(),
+        borderWidth: getBborderWidth(),
       },
     ],
   };
@@ -372,14 +435,14 @@ export const compareAreasData = (data: CompareAreas | null, labels) => {
         data: dataset1,
         backgroundColor: "rgba(54, 162, 235, 0.7)",
         // borderRadius: 4,
-        barThickness: 20, //высота графика
+        barThickness: getBarThickness_1(), //высота графика
       },
       {
         label: "Лип область",
         data: dataset2,
         backgroundColor: "rgba(54, 162, 235, 1)",
         // borderRadius: 4,
-        barThickness: 20,
+        barThickness: getBarThickness_1(),
       },
     ],
   };
@@ -404,14 +467,14 @@ export const actualizationStatusData = (data: ActualizationStatus | null, labels
         data: dataset1,
         backgroundColor: "rgba(54, 162, 235, 0.7)",
         // borderRadius: 4,
-        barThickness: 10, //высота графика
+        barThickness: getBarThickness_2(), //высота графика
       },
       {
         label: "данные актуализированы",
         data: dataset2,
         backgroundColor: "rgba(54, 162, 235, 1)",
         // borderRadius: 4,
-        barThickness: 10,
+        barThickness: getBarThickness_2(),
       },
     ],
   };

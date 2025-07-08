@@ -29,20 +29,22 @@ const OwnershipStructureChart = () => {
   ];
 
   return (
-    <div className={styles.wrapper} style={{ width: "max-content"}}>
+    <div className={styles.chartWrapper}>
       <p>Собственность: структура</p>
 
       <div
         className={styles.chart}
         style={{
-   
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
           gap: "20px",
         }}
       >
-        <div style={{ width: "120px" }}>
+        <div
+          className={styles.pieWrapper}
+          // style={{ width: "120px" }}
+        >
           <Pie data={chartData} options={options} />
         </div>
 

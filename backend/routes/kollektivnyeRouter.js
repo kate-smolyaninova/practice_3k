@@ -15,6 +15,7 @@ router.get("/compareAreasWithRegion", KollektivnyeController.compareAreasWithReg
 router.get("/actualizationStatus", KollektivnyeController.actualizationStatus); // Данные для графика "Статус актуализации данных"
 router.get("/employeeCount", KollektivnyeController.employeeCount); // Данные для инфоблока "Численность работников"
 router.get("/contractsUpdated", KollektivnyeController.contractsUpdated); // Данные для инфоблока "Обновлено договоров"
+router.get("/contractsNotUpdated", KollektivnyeController.contractsNotUpdated); // Данные для инфоблока "Не Обновлено договоров"
 
 // router.get("/contractsNoUpdated", KollektivnyeController.contractsNoUpdated); // Данные для инфоблока "Сколько КД не актуализировано"
 

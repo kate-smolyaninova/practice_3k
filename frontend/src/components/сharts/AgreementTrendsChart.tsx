@@ -48,10 +48,16 @@ const AgreementTrendsChart = () => {
   ];
 
   return (
-    <div className={styles.wrapper} style={{ width: "100%", height: "100%" }}>
+    <div
+      className={styles.chartWrapper}
+      // style={{ width: "100%", height: "100%" }}
+    >
       <p>Динамика договоров по кварталам</p>
 
-      <div className={styles.chart} style={{ width: "100%", height: "85%" }}>
+      <div
+        className={styles.chart}
+        // style={{ width: "100%", height: "85%" }}
+      >
         <Line data={chartData} options={options} plugins={[ChartDataLabels]} />
       </div>
 

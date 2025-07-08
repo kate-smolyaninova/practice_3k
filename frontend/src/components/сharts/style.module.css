@@ -1,14 +1,46 @@
-.wrapper {
-  /* width: 100% !important; */
+.chartWrapper {
+  /* width: 100% !important;
+  height: 100%; */
   /* height: 310px !important; */
   display: flex;
   flex-direction: column;
+  flex: 1;
+  height: 100%;
+  /* background-color: blue; */
   justify-content: space-between;
 }
 
-.wrapper > p {
-  font-size: 14px;
+.chart {
+  flex: 1;
+  height: 100%;
+  /* background-color: aqua; */
+  width: 100%;
+  position: relative;
+}
+
+.chartWrapper > p {
+  /* font-size: 14px; */
   font-weight: 700;
   text-transform: uppercase;
 }
 
+.pieWrapper {
+  flex: 1;
+  height: 80%;
+}
+
+@media screen and (min-width: 1300px) {
+  .chartWrapper > p {
+    font-size: 11px;
+  }
+
+  .chartWrapper {
+    gap: 5px;
+  }
+}
+
+@media screen and (min-width: 1700px) {
+  .chartWrapper > p {
+    font-size: 14px;
+  }
+}

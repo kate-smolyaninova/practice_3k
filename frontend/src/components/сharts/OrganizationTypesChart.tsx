@@ -28,7 +28,7 @@ const OrganizationTypesChart = () => {
   ];
 
   return (
-    <div className={styles.wrapper} style={{ width: "max-content" }}>
+    <div className={styles.chartWrapper} style={{ width: "max-content" }}>
       <p>Собственность: структура</p>
 
       <div
@@ -41,9 +41,8 @@ const OrganizationTypesChart = () => {
         }}
       >
         <div
-          style={{
-            height: "120px",
-          }}
+          className={styles.pieWrapper}
+          // style={{ height: "120px" }}
         >
           <Pie data={chartData} options={options} />
         </div>

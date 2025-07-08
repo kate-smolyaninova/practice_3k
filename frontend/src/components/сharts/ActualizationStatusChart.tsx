@@ -47,10 +47,13 @@ const ActualizationStatusChart = () => {
   ];
 
   return (
-    <div className={styles.wrapper} style={{ width: "25%", height: "100%" }}>
+    <div className={styles.chartWrapper} style={{ width: "25%" }}>
       <p>Статус актуализации данных</p>
 
-      <div className={styles.chart} style={{ width: "100%", height: "85%" }}>
+      <div
+        className={styles.chart}
+        // style={{ width: "100%", height: "85%" }}
+      >
         <Bar data={chartData} options={options} />
       </div>
 

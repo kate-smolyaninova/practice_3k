@@ -33,7 +33,7 @@ function App() {
           <OrganizationTypesChart />
         </div>
 
-        <div className="chart_wrapper">
+        <div className="ATCWrapper">
           <AgreementTrendsChart />
         </div>
       </div>

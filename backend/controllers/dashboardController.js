@@ -76,6 +76,31 @@ class DashboardController {
       return res.status(500).json({ error: "Ошибка доступа к файлу" });
     }
   }
+
+  async infoblock(req, res) {
+    try {
+      const kollektivnye_1 = await KollektivnyeController.employeeCount();
+      const rabotodateli = await RabotodateliController.organizationCount();
+      const kollektivnye_2 = await KollektivnyeController.contractsUpdated();
+      const otraslevye = await OtraslevyeController.agreementsUpdated();
+      const finansirovanie = await FinansirovanieController.financingAmount();
+      const kollektivnye_3 = await KollektivnyeController.contractsNotUpdated();
+
+      const data = {
+        kollektivnye_1,
+        rabotodateli,
+        kollektivnye_2,
+        otraslevye,
+        finansirovanie,
+        kollektivnye_3,
+      };
+
+      return res.json(data);
+    } catch (err) {
+      console.error("Ошибка при чтении файла:", err);
+      return res.status(500).json({ error: "Ошибка доступа к файлу" });
+    }
+  }
 }
 
 module.exports = new DashboardController();

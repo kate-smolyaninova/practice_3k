@@ -171,14 +171,14 @@ class KollektivnyeController {
         const period = row["Отчетный период"]?.toLowerCase().trim();
         const count = parseFloat(row["Численность охваченных работников"]);
 
-        infoBlock["Значение"] += count;
-
         if (period === currentQuarter) {
           currentQuarterTotal += count;
         } else if (period === previousQuarter) {
           previousQuarterTotal += count;
         }
       });
+
+      infoBlock["Значение"] = currentQuarterTotal;
 
       // infoBlock["Процент"] =
       //   infoBlock["Значение"] > 0
@@ -199,7 +199,7 @@ class KollektivnyeController {
         infoBlock["Процент"] = "0";
       }
 
-      return res.json(infoBlock);
+      return infoBlock;
       // return infoBlock;
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
@@ -207,7 +207,6 @@ class KollektivnyeController {
     }
   }
 
-  // Данные для инфоблока "Обновлено договоров"
   async contractsUpdated(req, res) {
     try {
       const data = readExcelFile(fileName);
@@ -221,50 +220,93 @@ class KollektivnyeController {
       const currentQuarter = getCurrentQuarter().toLowerCase();
       const previousQuarter = getPreviousQuarter(currentQuarter);
 
-      let currentQuarterTotal = 0;
-      let previousQuarterTotal = 0;
+      let currentQuarterUpdated = 0;
+      let previousQuarterUpdated = 0;
 
-      data.map((row) => {
+      data.forEach((row) => {
         const period = row["Отчетный период"]?.toLowerCase().trim();
         const status = row["Статус согласования"]?.toLowerCase().trim();
 
-        if (status === "данные актуализированы") {
-          if (period === currentQuarter) {
-            currentQuarterTotal += 1;
-          } else if (period === previousQuarter) {
-            previousQuarterTotal += 1;
-          }
+        if (period === currentQuarter && status === "данные актуализированы") {
+          currentQuarterUpdated += 1;
+        }
+
+        if (period === previousQuarter && status === "данные актуализированы") {
+          previousQuarterUpdated += 1;
         }
       });
 
-      infoBlock["Значение"] = currentQuarterTotal;
+      infoBlock["Значение"] = currentQuarterUpdated;
 
-      // infoBlock["Процент"] =
-      //   infoBlock["Значение"] > 0
-      //     ? (
-      //         ((infoBlock["Значение"] - pastPeriodsTotal) / pastPeriodsTotal) *
-      //         100
-      //       ).toFixed(2)
-      //     : 0;
-
-      if (previousQuarterTotal > 0) {
+      if (previousQuarterUpdated > 0) {
         infoBlock["Процент"] = (
-          ((currentQuarterTotal - previousQuarterTotal) / previousQuarterTotal) *
+          ((currentQuarterUpdated - previousQuarterUpdated) / previousQuarterUpdated) *
           100
         ).toFixed(2);
+      } else if (currentQuarterUpdated > 0) {
+        infoBlock["Процент"] = "100";
       } else {
         infoBlock["Процент"] = "0";
       }
 
-      // return infoBlock;
-      return res.json(infoBlock);
+      return infoBlock;
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
       return res.status(500).json({ error: "Ошибка доступа к файлу" });
     }
   }
 
-  
+  async contractsNotUpdated(req, res) {
+    try {
+      const data = readExcelFile(fileName);
+
+      const infoBlock = {
+        Заголовок: "Договоры не актуализированы, ед",
+        Значение: 0,
+        Процент: 0,
+      };
+
+      const currentQuarter = getCurrentQuarter().toLowerCase();
+      const previousQuarter = getPreviousQuarter(currentQuarter);
+
+      let currentQuarterNotUpdated = 0;
+      let previousQuarterNotUpdated = 0;
+      let totalCurrentQuarter = 0;
+
+      data.forEach((row) => {
+        const period = row["Отчетный период"]?.toLowerCase().trim();
+        const status = row["Статус согласования"]?.toLowerCase().trim();
+
+        if (period === currentQuarter) {
+          totalCurrentQuarter += 1;
+          if (status !== "данные актуализированы") {
+            currentQuarterNotUpdated += 1;
+          }
+        }
+
+        if (period === previousQuarter && status !== "данные актуализированы") {
+          previousQuarterNotUpdated += 1;
+        }
+      });
+
+      infoBlock["Значение"] = currentQuarterNotUpdated;
+
+      if (totalCurrentQuarter > 0) {
+        infoBlock["Процент"] = (
+          ((currentQuarterNotUpdated - previousQuarterNotUpdated) /
+            previousQuarterNotUpdated) *
+          100
+        ).toFixed(2);
+      } else {
+        infoBlock["Процент"] = "0";
+      }
+
+      return infoBlock;
+    } catch (err) {
+      console.error("Ошибка при чтении файла:", err);
+      return res.status(500).json({ error: "Ошибка доступа к файлу" });
+    }
+  }
 }
 
 module.exports = new KollektivnyeController();

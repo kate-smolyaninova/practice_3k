@@ -133,11 +133,20 @@ body {
   overflow-x: hidden;
   font-weight: 400;
   font-size: 14px;
+
+  /* background-color: antiquewhite; */
+}
+
+html,
+body {
+  height: 100%;
 }
 
 .wrapper {
   width: 95%;
   margin: 0 auto;
+  min-height: 100vh;
+  /* background-color: blueviolet; */
 }
 
 /* .app {

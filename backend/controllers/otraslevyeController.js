@@ -124,7 +124,7 @@ class OtraslevyeController {
         infoBlock["Процент"] = "0";
       }
 
-      return res.json(infoBlock);
+      return infoBlock;
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
       return res.status(500).json({ error: "Ошибка доступа к файлу" });

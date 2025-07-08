@@ -6,5 +6,6 @@ router.get("/agreementTrends", DashboardController.agreementTrends); // данн
 router.get("/quarterlyTrends", DashboardController.quarterlyTrends); // Данне для графика "Динамика договоров по кварталам"
 router.get("/compareAreasWithRegion", DashboardController.compareAreasWithRegion); // Данные для графика "Сравнение районов с областью"
 router.get("/actualizationStatus", DashboardController.actualizationStatus); // Данные для графика "Статус актуализации данных"
+router.get("/infoblock", DashboardController.infoblock);
 
 module.exports = router;

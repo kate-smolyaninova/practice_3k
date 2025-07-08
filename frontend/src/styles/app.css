@@ -3,45 +3,58 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 30px;
+  /* justify-content: space-between; */
   /* gap: 40px; */
+
+  /* background-color: aqua; */
 }
 
 .chart-row-0,
 .chart-row-01,
 .chart-row-1,
-.chart-row-2 {
-  width: 100%;
-
-  height: calc(25% - 30px);
-  margin-bottom: 30px;
+.chart-row-2,
+.chart-row-3 {
+  /* width: 1,00%;
+  min-height: calc(25% - 30px);
+  margin-bottom: 30px; */
+  /* background-color: aqua; */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .chart-row-1 {
   display: flex;
   flex-direction: row;
   align-items: center;
+  gap: 10px;
   justify-content: space-between;
+  /* background-color: aqua; */
 }
 
 .chart-row-2 {
-
+  flex: 1;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: start;
+  gap: 10px;
+  /* background-color: aqua; */
 }
 
 .pie-wrapper {
   /* background-color: aqua; */
-  height: "200px";
-  width: "50%";
+  /* height: 200px; */
+
   display: flex;
+  flex: 1;
   flex-direction: row;
   justify-content: space-between;
   gap: 30px;
 }
 
-.chart_wrapper {
-  width: 55%;
+.ATCWrapper {
+  width: 100%;
+  /* background-color: aqua; */
 }
+
+

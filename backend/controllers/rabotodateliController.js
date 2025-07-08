@@ -1,8 +1,9 @@
 const { normalizeCityName } = require("../utils/normalize");
 const { readExcelFile } = require("../utils/readExcelFile");
 const { actualizationStatusData } = require("../utils/actualizationStatusData");
-const { getCurrentQuarter } = require("./../utils/getCurrentQuarter");
 const { getQuarterDate } = require("./../utils/getQuarterDate");
+const getPreviousQuarter = require("./../utils/getPreviousQuarter");
+const { getCurrentQuarter } = require("./../utils/getCurrentQuarter");
 
 const fileName = "rabotodateli";
 
@@ -95,46 +96,53 @@ class RabotodateliController {
 
   // Данные для инфолока "Количество организаций, ед"
   async organizationCount(req, res) {
-    //   try {
-    //     const data = readExcelFile(fileName);
-    //     const infoBlock = {
-    //       Заголовок: "Количество организаций, ед",
-    //       Значение: 0,
-    //       Процент: 0,
-    //     };
-    //     let pastPeriodsTotal = 0;
-    //     const { startDate, endDate } = getQuarterDate(); // начало и конец сегодняшнего квартала
-    //     const currentQuarter = getCurrentQuarter();
-    //     data.map((row) => {
-    //       const period = row["Отчетный период"]?.toLowerCase().trim();
-    //       const data = new Date(row["Дата создания (регистрации)"]);
-    //       infoBlock["Значение"] += 1;
-    //       // if (period !== currentQuarter) {
-    //       //   pastPeriodsTotal += 1;
-    //       // }
-    //       const isInCurrentQuarter = data >= startDate && data < endDate;
-    //       if (!isInCurrentQuarter) {
-    //         pastPeriodsTotal += 1;
-    //       }
-    //       console.log(data);
-    //     });
-    //     console.log(startDate);
-    //     console.log(endDate);
-    //     console.log(pastPeriodsTotal);
-    //     console.log(infoBlock.Значение);
-    //     infoBlock["Процент"] =
-    //       infoBlock["Значение"] > 0
-    //         ? (
-    //             ((infoBlock["Значение"] - pastPeriodsTotal) / pastPeriodsTotal) *
-    //             100
-    //           ).toFixed(2)
-    //         : 0;
-    //     return res.json(infoBlock);
-    //     // return infoBlock;
-    //   } catch (err) {
-    //     console.error("Ошибка при чтении файла:", err);
-    //     return res.status(500).json({ error: "Ошибка доступа к файлу" });
-    //   }
+    try {
+      const data = readExcelFile(fileName);
+
+      const infoBlock = {
+        Заголовок: "Количество организаций, ед",
+        Значение: 0,
+        Процент: 0,
+      };
+
+      const currentQuarter = getCurrentQuarter().toLowerCase();
+      const previousQuarter = getPreviousQuarter(currentQuarter);
+
+      const currentOrgs = new Set();
+      const previousOrgs = new Set();
+
+      data.map((row) => {
+        const period = row["Отчетный период"]?.toLowerCase().trim();
+        const name = row["Наименование"]?.trim();
+
+        if (!name) return; // пропуск пустых названий
+
+        if (period === currentQuarter) {
+          currentOrgs.add(name);
+        } else if (period === previousQuarter) {
+          previousOrgs.add(name);
+        }
+      });
+
+      const currentCount = currentOrgs.size;
+      const previousCount = previousOrgs.size;
+
+      infoBlock["Значение"] = currentCount;
+
+      if (previousCount > 0) {
+        infoBlock["Процент"] = (
+          ((currentCount - previousCount) / previousCount) *
+          100
+        ).toFixed(2);
+      } else {
+        infoBlock["Процент"] = "0";
+      }
+
+      return infoBlock;
+    } catch (err) {
+      console.error("Ошибка при чтении файла:", err);
+      return res.status(500).json({ error: "Ошибка доступа к файлу" });
+    }
   }
 }
 

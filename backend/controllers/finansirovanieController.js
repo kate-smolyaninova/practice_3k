@@ -3,6 +3,7 @@ const { readExcelFile } = require("../utils/readExcelFile");
 // const { compareAreas } = require("../utils/compareAreas");
 const { actualizationStatusData } = require("../utils/actualizationStatusData");
 const { getCurrentQuarter } = require("../utils/getCurrentQuarter");
+const getPreviousQuarter = require("./../utils/getPreviousQuarter");
 
 const fileName = "finansirovanie";
 
@@ -59,6 +60,59 @@ class FinansirovanieController {
 
       return actualizationStatusCount;
       // return res.json(actualizationStatusCount);
+    } catch (err) {
+      console.error("Ошибка при чтении файла:", err);
+      return res.status(500).json({ error: "Ошибка доступа к файлу" });
+    }
+  }
+
+  async financingAmount(req, res) {
+    try {
+      const data = readExcelFile(fileName);
+
+      const infoBlock = {
+        Заголовок: "Финансирование, млн руб",
+        Значение: 0,
+        Процент: 0,
+      };
+
+      const currentQuarter = getCurrentQuarter().toLowerCase();
+      const previousQuarter = getPreviousQuarter(currentQuarter);
+
+      let currentQuarterSum = 0;
+      let previousQuarterSum = 0;
+
+      data.forEach((row) => {
+        const period = row["Отчетный период"]?.toLowerCase().trim();
+        const sum = parseFloat(row["Сумма, тыс. руб."]);
+
+        if (isNaN(sum)) return;
+
+        if (period === currentQuarter) {
+          currentQuarterSum += sum;
+        } else if (period === previousQuarter) {
+          previousQuarterSum += sum;
+        }
+      });
+
+      // Переводим из тысяч в миллионы
+      const currentInMillions = currentQuarterSum / 1000;
+      const previousInMillions = previousQuarterSum / 1000;
+
+      infoBlock["Значение"] = Number(currentInMillions.toFixed(2));
+
+      if (previousInMillions > 0) {
+        infoBlock["Процент"] = (
+          ((currentInMillions - previousInMillions) / previousInMillions) *
+          100
+        ).toFixed(2);
+      } else if (currentInMillions > 0) {
+        infoBlock["Процент"] = "100";
+      } else {
+        infoBlock["Процент"] = "0";
+      }
+
+      return infoBlock;
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
       return res.status(500).json({ error: "Ошибка доступа к файлу" });
