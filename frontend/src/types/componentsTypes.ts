@@ -7,3 +7,9 @@ export type LegendProps = {
   item: Legend[];
   orientation: "horizontal" | "vertical";
 };
+
+export type InfoblockProps = {
+  description: string;
+  count: number;
+  percent: number;
+};

@@ -25,8 +25,13 @@
 .percent {
   font-size: 13px;
   font-weight: 600;
-
   color: #5fb0c0;
+}
+
+.percentViolet {
+  color: #8962ac;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .data {
@@ -34,8 +39,25 @@
   color: #a59faa;
 }
 
-.infoblockRow{
+.infoblockRow {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  gap: 20px;
+}
+
+@media screen and (max-width: 1700px) {
+  .description {
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  .count {
+    font-size: 21px;
+  }
+
+  .percent,
+  .percentViolet {
+    font-size: 11px;
+  }
 }

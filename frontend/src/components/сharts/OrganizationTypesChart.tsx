@@ -28,8 +28,8 @@ const OrganizationTypesChart = () => {
   ];
 
   return (
-    <div className={styles.chartWrapper} style={{ width: "max-content" }}>
-      <p>Собственность: структура</p>
+    <div className={styles.chartWrapper}>
+      <p>Типология организаций</p>
 
       <div
         className={styles.chart}

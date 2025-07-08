@@ -1,10 +1,10 @@
 import normalizeCityName from "../../utils/normalize";
 
 const getFontSizeByScreen = () => {
-  if (typeof window === "undefined") return 12; // SSR fallback
+  if (typeof window === "undefined") return 12;
   const width = window.innerWidth;
 
-  if (width > 2300) return 15;
+  if (width > 2300) return 13;
   if (width > 1900) return 11;
   if (width > 1800) return 10;
   if (width > 1500) return 9;
@@ -16,7 +16,7 @@ const getFontSizeByScreen = () => {
 };
 
 const getBarThickness_1 = () => {
-  if (typeof window === "undefined") return 12; // SSR fallback
+  if (typeof window === "undefined") return 12;
   const width = window.innerWidth;
 
   if (width > 1800) return 20;
@@ -29,7 +29,7 @@ const getBarThickness_1 = () => {
 };
 
 const getBarThickness_2 = () => {
-  if (typeof window === "undefined") return 12; // SSR fallback
+  if (typeof window === "undefined") return 12;
   const width = window.innerWidth;
 
   if (width > 2000) return 20;
@@ -42,7 +42,7 @@ const getBarThickness_2 = () => {
 };
 
 const getBborderWidth = () => {
-  if (typeof window === "undefined") return 12; // SSR fallback
+  if (typeof window === "undefined") return 12;
   const width = window.innerWidth;
 
   if (width > 1800) return 3;
@@ -53,7 +53,7 @@ const getBborderWidth = () => {
 };
 
 const getPointRadius = () => {
-  if (typeof window === "undefined") return 12; // SSR fallback
+  if (typeof window === "undefined") return 12;
   const width = window.innerWidth;
 
   if (width > 1800) return 5;
@@ -465,14 +465,14 @@ export const actualizationStatusData = (data: ActualizationStatus | null, labels
       {
         label: "не актуализировано",
         data: dataset1,
-        backgroundColor: "rgba(54, 162, 235, 0.7)",
+        backgroundColor: "#C8C2FE",
         // borderRadius: 4,
         barThickness: getBarThickness_2(), //высота графика
       },
       {
         label: "данные актуализированы",
         data: dataset2,
-        backgroundColor: "rgba(54, 162, 235, 1)",
+        backgroundColor: "#9B8EDE",
         // borderRadius: 4,
         barThickness: getBarThickness_2(),
       },

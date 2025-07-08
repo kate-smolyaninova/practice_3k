@@ -9,9 +9,11 @@
 
   /* background-color: aqua; */
 }
+.chart-row-01 {
+  height: max-content;
+}
 
 .chart-row-0,
-.chart-row-01,
 .chart-row-1,
 .chart-row-2,
 .chart-row-3 {
@@ -56,5 +58,3 @@
   width: 100%;
   /* background-color: aqua; */
 }
-
-
