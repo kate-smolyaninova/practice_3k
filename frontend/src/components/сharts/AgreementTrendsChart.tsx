@@ -52,7 +52,7 @@ const AgreementTrendsChart = () => {
       className={styles.chartWrapper}
       // style={{ width: "100%", height: "100%" }}
     >
-      <p>Динамика договоров по кварталам</p>
+      <p>Динамика заключения соглашений</p>
 
       <div
         className={styles.chart}

@@ -64,6 +64,10 @@ const getPointRadius = () => {
   return 10;
 };
 
+export const hideZeroFormatter = (value: number) => {
+  return value === 0 ? null : value;
+};
+
 import type {
   ActualizationStatus,
   AgreementTrends,
@@ -369,7 +373,7 @@ export const lineOptions = (isItalic: boolean, max: number, stepSize: number) =>
           family: "Montserrat",
           size: getFontSizeByScreen(),
         },
-        formatter: (value: number) => value,
+        formatter: hideZeroFormatter,
       },
     },
     scales: {
@@ -480,7 +484,7 @@ export const actualizationStatusData = (data: ActualizationStatus | null, labels
   };
 };
 
-export const barOptions = (labels) => {
+export const barOptions = (labels, max: number,) => {
   return {
     indexAxis: "y",
     maintainAspectRatio: false,
@@ -516,6 +520,7 @@ export const barOptions = (labels) => {
             size: getFontSizeByScreen(),
           },
         },
+        max: max,
       },
       y: {
         grid: {

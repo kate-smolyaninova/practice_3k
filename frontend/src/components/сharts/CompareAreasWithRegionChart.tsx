@@ -34,7 +34,7 @@ const CompareAreasWithRegionChart = () => {
     return <div>Нет данных для отображения</div>;
   }
 
-  const options = barOptions(labels);
+  const options = barOptions(labels, 12);
 
   const props = [
     { color: "#4C84CF", name: "Липецкая область" },

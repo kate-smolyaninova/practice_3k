@@ -39,7 +39,7 @@ const IndustryCoverageChart = () => {
     return <div>Нет данных для отображения</div>;
   }
 
-  const options = lineOptions(true, 100, 20);
+  const options = lineOptions(true, 500, 100);
 
   const props = [
     { color: "#7267A8", name: "Иные отрасли" },

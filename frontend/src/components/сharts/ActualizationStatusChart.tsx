@@ -39,7 +39,7 @@ const ActualizationStatusChart = () => {
     return <div>Нет данных для отображения</div>;
   }
 
-  const options = barOptions(labels);
+  const options = barOptions(labels, 12);
 
   const props = [
     { color: "#C8C2FE", name: "Не актуализировано" },

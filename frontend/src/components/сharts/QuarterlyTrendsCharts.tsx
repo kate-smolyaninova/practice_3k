@@ -42,7 +42,7 @@ const QuarterlyTrendsCharts = () => {
     return <div>Нет данных для отображения</div>;
   }
 
-  const options = lineOptions(false, 10, 2);
+  const options = lineOptions(false, 15, 3);
 
   const props = [
     { color: "#8E44AD", name: "Коллективные договоры" },
@@ -60,7 +60,7 @@ const QuarterlyTrendsCharts = () => {
     // </div>
 
     <div className={styles.chartWrapper} style={{ width: "45%" }}>
-      <p>Охват работников по отраслям деятельности</p>
+      <p>Динамика договоров по кварталам</p>
 
       <div
         className={styles.chart}

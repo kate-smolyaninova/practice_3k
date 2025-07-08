@@ -60,8 +60,8 @@ class DashboardController {
     try {
       const kollektivnye = await KollektivnyeController.actualizationStatus();
       const otraslevye = await OtraslevyeController.actualizationStatus();
-      const finansirovanie = await RabotodateliController.actualizationStatus();
-      const rabotodateli = await FinansirovanieController.actualizationStatus();
+      const finansirovanie = await FinansirovanieController.actualizationStatus();
+      const rabotodateli = await RabotodateliController.actualizationStatus();
 
       const data = {
         "Отраслевые соглашения": otraslevye,
