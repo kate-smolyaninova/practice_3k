@@ -26,8 +26,6 @@ const InfoblockRow = () => {
         />
       ))}
     </div>
-
-    // http://localhost:5000/api/dashboard/infoblock
   );
 };
 

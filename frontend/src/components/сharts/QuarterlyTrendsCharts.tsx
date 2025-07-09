@@ -50,28 +50,11 @@ const QuarterlyTrendsCharts = () => {
   ];
 
   return (
-    // <div style={{ width: "100%", height: "240px" }}>
-    //   <Line
-    //     data={chartData}
-    //     options={options}
-    //     plugins={[ChartDataLabels]}
-    //     style={{ width: "100%", height: "100%", display: "block" }}
-    //   />
-    // </div>
-
     <div className={styles.chartWrapper} style={{ width: "45%" }}>
       <p>Динамика договоров по кварталам</p>
 
-      <div
-        className={styles.chart}
-        //  style={{ flex: 1, height: "100%" }}
-      >
-        <Line
-          data={chartData}
-          options={options}
-          plugins={[ChartDataLabels]}
-          // style={{ width: "100%", height: "50%", display: "block" }}
-        />
+      <div className={styles.chart}>
+        <Line data={chartData} options={options} plugins={[ChartDataLabels]} />
       </div>
 
       <Legend item={props} orientation="horizontal" />

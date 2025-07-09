@@ -1,4 +1,3 @@
-const { normalizeCityName } = require("../utils/normalize");
 const { readExcelFile } = require("../utils/readExcelFile");
 const { compareAreas } = require("../utils/compareAreas");
 const { actualizationStatusData } = require("../utils/actualizationStatusData");

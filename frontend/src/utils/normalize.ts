@@ -8,7 +8,3 @@ export default function normalizeCityName(name: string): string {
     .replace(/мр\.?|мо\.?|мун\.?обл\.?|округ\s*$/i, "")
     .trim();
 }
-
-// const { normalizeCityName } = require("../utils/normalize");
-
-// normalizeCityName(row["Муниципальное образование"]);

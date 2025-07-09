@@ -109,10 +109,6 @@ class KollektivnyeController {
         }
       });
 
-      // data.forEach((row) => {
-      //   console.log(row["Вид деятельности"]);
-      // });
-
       return res.json(industryCoverage);
     } catch (err) {
       console.error("Ошибка при чтении файла:", err);
@@ -179,14 +175,6 @@ class KollektivnyeController {
       });
 
       infoBlock["Значение"] = currentQuarterTotal;
-
-      // infoBlock["Процент"] =
-      //   infoBlock["Значение"] > 0
-      //     ? (
-      //         ((infoBlock["Значение"] - pastPeriodsTotal) / pastPeriodsTotal) *
-      //         100
-      //       ).toFixed(2)
-      //     : 0;
 
       if (previousQuarterTotal > 0) {
         infoBlock["Процент"] = (

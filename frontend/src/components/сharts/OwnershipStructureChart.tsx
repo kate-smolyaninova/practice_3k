@@ -41,10 +41,7 @@ const OwnershipStructureChart = () => {
           gap: "20px",
         }}
       >
-        <div
-          className={styles.pieWrapper}
-          // style={{ width: "120px" }}
-        >
+        <div className={styles.pieWrapper}>
           <Pie data={chartData} options={options} />
         </div>
 

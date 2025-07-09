@@ -1,6 +1,5 @@
 const { normalizeCityName } = require("../utils/normalize");
 const { readExcelFile } = require("../utils/readExcelFile");
-// const { compareAreas } = require("../utils/compareAreas");
 const { actualizationStatusData } = require("../utils/actualizationStatusData");
 const { getCurrentQuarter } = require("../utils/getCurrentQuarter");
 const getPreviousQuarter = require("./../utils/getPreviousQuarter");
@@ -95,7 +94,6 @@ class FinansirovanieController {
         }
       });
 
-      // Переводим из тысяч в миллионы
       const currentInMillions = currentQuarterSum / 1000;
       const previousInMillions = previousQuarterSum / 1000;
 

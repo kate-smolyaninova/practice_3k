@@ -1,5 +1,4 @@
 function getPreviousQuarter(currentQuarterStr) {
-  // currentQuarterStr, например, "2 квартал 2025"
   const [quarterStr, , yearStr] = currentQuarterStr.split(" ");
   let quarter = parseInt(quarterStr);
   let year = parseInt(yearStr);

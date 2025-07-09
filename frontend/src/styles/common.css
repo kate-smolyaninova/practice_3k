@@ -3,6 +3,11 @@
   --background: #1d0e2a;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 * {
   padding: 0px;
   margin: 0px;
@@ -116,7 +121,7 @@ legend {
   display: block;
 }
 
-input:-webkit-autofill {
+/* input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px var(--background) inset;
   box-shadow: 0 0 0 30px var(--background) inset;
 }
@@ -124,7 +129,7 @@ input:-webkit-autofill {
 input:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 30px var(--background) inset;
   box-shadow: 0 0 0 30px var(--background) inset;
-}
+} */
 
 body {
   font-family: "Montserrat", sans-serif;
@@ -133,29 +138,10 @@ body {
   overflow-x: hidden;
   font-weight: 400;
   font-size: 14px;
-
-  /* background-color: antiquewhite; */
-}
-
-html,
-body {
-  height: 100%;
 }
 
 .wrapper {
   width: 95%;
   margin: 0 auto;
   min-height: 100vh;
-  /* background-color: blueviolet; */
 }
-
-/* .app {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin: 0 auto; 
-  background-color: aliceblue;
-} */

@@ -1,7 +1,5 @@
-const { normalizeCityName } = require("../utils/normalize");
 const { readExcelFile } = require("../utils/readExcelFile");
 const { actualizationStatusData } = require("../utils/actualizationStatusData");
-const { getQuarterDate } = require("./../utils/getQuarterDate");
 const getPreviousQuarter = require("./../utils/getPreviousQuarter");
 const { getCurrentQuarter } = require("./../utils/getCurrentQuarter");
 
@@ -115,7 +113,7 @@ class RabotodateliController {
         const period = row["Отчетный период"]?.toLowerCase().trim();
         const name = row["Наименование"]?.trim();
 
-        if (!name) return; // пропуск пустых названий
+        if (!name) return; 
 
         if (period === currentQuarter) {
           currentOrgs.add(name);

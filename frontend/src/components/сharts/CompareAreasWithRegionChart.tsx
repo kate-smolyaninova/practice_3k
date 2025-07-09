@@ -45,10 +45,7 @@ const CompareAreasWithRegionChart = () => {
     <div className={styles.chartWrapper} style={{ width: "25%" }}>
       <p>Сравнение районов с областью</p>
 
-      <div
-        className={styles.chart}
-        // style={{ flex: 1, height: "100%" }}
-      >
+      <div className={styles.chart}>
         <Bar data={chartData} options={options} />
       </div>
 

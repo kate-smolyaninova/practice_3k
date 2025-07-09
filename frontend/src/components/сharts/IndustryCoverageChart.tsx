@@ -52,16 +52,12 @@ const IndustryCoverageChart = () => {
     <div className={styles.chartWrapper}>
       <p>Охват работников по отраслям деятельности</p>
 
-      <div
-        className={styles.chart}
-        // style={{ flex: 1, height: "100%" }}
-      >
+      <div className={styles.chart}>
         <Line
           data={chartData}
           options={options}
           plugins={[ChartDataLabels]}
           style={{ flex: 1 }}
-          // style={{ backgroundColor:'red'}}
         />
       </div>
 

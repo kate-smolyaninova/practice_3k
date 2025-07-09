@@ -50,10 +50,7 @@ const ActualizationStatusChart = () => {
     <div className={styles.chartWrapper} style={{ width: "25%" }}>
       <p>Статус актуализации данных</p>
 
-      <div
-        className={styles.chart}
-        // style={{ width: "100%", height: "85%" }}
-      >
+      <div className={styles.chart}>
         <Bar data={chartData} options={options} />
       </div>
 

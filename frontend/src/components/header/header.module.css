@@ -19,11 +19,6 @@
   text-transform: uppercase;
 }
 
-/* .logo > img {
-  width: 80px;
-
-} */
-
 .links {
   display: flex;
   flex-direction: row;

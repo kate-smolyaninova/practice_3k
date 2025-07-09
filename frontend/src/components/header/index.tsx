@@ -32,7 +32,6 @@ const Header = () => {
         <a>Администратор</a>
         <a>Выйти</a>
       </div> */}
-
       {size.width}px × {size.height}px
     </div>
   );

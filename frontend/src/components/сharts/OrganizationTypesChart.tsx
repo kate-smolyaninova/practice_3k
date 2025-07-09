@@ -40,10 +40,7 @@ const OrganizationTypesChart = () => {
           gap: "20px",
         }}
       >
-        <div
-          className={styles.pieWrapper}
-          // style={{ height: "120px" }}
-        >
+        <div className={styles.pieWrapper}>
           <Pie data={chartData} options={options} />
         </div>
 
